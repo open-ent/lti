@@ -1,0 +1,31 @@
+    {
+      "name": "fr.openent~lti~${ltiVersion}",
+      "config": {
+        "main" : "fr.openent.lti.Lti",
+        "port" : 8170,
+        "app-name" : "Lti",
+        "app-address" : "/lti",
+        "app-icon" : "lti-large",
+        "app-type" : "END_USER",
+        "host": "${host}",
+        "ssl" : $ssl,
+        "auto-redeploy": false,
+        "userbook-host": "${host}",
+        "integration-mode" : "HTTP",
+        "app-registry.port" : 8012,
+        "mode" : "${mode}",
+        "entcore.port" : 8009,
+        "sql" : true,
+        "mongodb" : false,
+        "db-schema" : "lti",
+        "lti" : {
+          "issuer" : "${host}",
+          "platform-name" : "${ltiPlatformName}",
+          "private-key" : "${ltiPrivateKeyPem}",
+          "kid" : "${ltiKid}",
+          "previous-public-keys" : [],
+          "access-token-ttl-seconds" : 3600,
+          "jwks-cache-seconds" : 600
+        }
+      }
+    }

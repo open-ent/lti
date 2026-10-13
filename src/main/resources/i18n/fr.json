@@ -1,0 +1,12 @@
+{
+	"lti": "Outils externes (LTI)",
+	"lti.launch": "Lancer un outil externe (LTI)",
+	"lti.deeplink": "Insérer un contenu depuis un outil externe (LTI Deep Linking)",
+	"lti.tools": "Outils externes",
+	"unknown.tool": "Cet outil n'existe pas ou n'est pas activé.",
+	"tool.not.deployed": "Cet outil n'est pas activé pour votre établissement.",
+	"context.forbidden": "Vous n'appartenez pas à cette classe ou à ce groupe.",
+	"tool.without.deep.linking": "Cet outil ne permet pas la sélection de contenus.",
+	"replayed_request": "Cette demande a déjà été utilisée. Relancez l'outil depuis l'ENT.",
+	"login_required": "Votre session ENT a changé. Relancez l'outil depuis l'ENT."
+}

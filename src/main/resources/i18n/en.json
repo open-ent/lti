@@ -1,0 +1,12 @@
+{
+	"lti": "External tools (LTI)",
+	"lti.launch": "Launch an external tool (LTI)",
+	"lti.deeplink": "Insert content from an external tool (LTI Deep Linking)",
+	"lti.tools": "External tools",
+	"unknown.tool": "This tool does not exist or is disabled.",
+	"tool.not.deployed": "This tool is not enabled for your school.",
+	"context.forbidden": "You are not a member of this class or group.",
+	"tool.without.deep.linking": "This tool does not support content selection.",
+	"replayed_request": "This request has already been used. Launch the tool again from the ENT.",
+	"login_required": "Your ENT session has changed. Launch the tool again from the ENT."
+}
