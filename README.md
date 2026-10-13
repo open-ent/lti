@@ -124,4 +124,10 @@ curl -X POST https://ent.example.org/lti/admin/tools -H 'Content-Type: applicati
 mvn -B verify          # compilation + tests unitaires (aucun ENT requis)
 ```
 
-Le parent Maven est `io.edifice:app-parent:1.2.0` (identique à `fr.openent:app-parent`, publié sur le Nexus public ODE).
+Le parent Maven est `fr.openent:app-parent:1.2.0` ; le module compile contre `org.entcore:common` `6.16.8-patched`
+(rct-nexus), comme les autres modules open-ent.
+
+## Publication
+
+- tag `X.Y.Z` sur `main` : `build-and-publish.yml` publie `fr.openent~lti~X.Y.Z-fat.jar` sur rct-nexus et GitHub Packages ;
+- `publish-dev-tag.yml`, lancé à la main depuis `develop`, publie l'instantané `X.Y.Z-dev`.
