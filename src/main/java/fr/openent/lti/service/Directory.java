@@ -13,8 +13,8 @@ public class Directory {
 	/** Classe ou groupe : { id, name } ou null. */
 	public Future<JsonObject> context(String contextId) {
 		final String query =
-				"MATCH (c:Class {id: {id}}) RETURN c.id AS id, c.name AS name " +
-				"UNION MATCH (g:Group {id: {id}}) RETURN g.id AS id, coalesce(g.displayName, g.name) AS name";
+				"MATCH (c:Class {id: $id}) RETURN c.id AS id, c.name AS name " +
+				"UNION MATCH (g:Group {id: $id}) RETURN g.id AS id, coalesce(g.displayName, g.name) AS name";
 		return Db.neo4j(query, new JsonObject().put("id", contextId))
 				.map(rows -> rows.isEmpty() ? null : rows.getJsonObject(0));
 	}
@@ -22,15 +22,15 @@ public class Directory {
 	/** Membres d'une classe (via ses groupes de profil) ou d'un groupe. */
 	public Future<JsonArray> members(String contextId) {
 		final String query =
-				"MATCH (c:Class {id: {id}})<-[:DEPENDS]-(:ProfileGroup)<-[:IN]-(u:User) " + MEMBER_RETURN +
-				" UNION MATCH (g:Group {id: {id}})<-[:IN]-(u:User) " + MEMBER_RETURN;
+				"MATCH (c:Class {id: $id})<-[:DEPENDS]-(:ProfileGroup)<-[:IN]-(u:User) " + MEMBER_RETURN +
+				" UNION MATCH (g:Group {id: $id})<-[:IN]-(u:User) " + MEMBER_RETURN;
 		return Db.neo4j(query, new JsonObject().put("id", contextId));
 	}
 
 	public Future<Boolean> isMember(String contextId, String userId) {
 		final String query =
-				"MATCH (c:Class {id: {id}})<-[:DEPENDS]-(:ProfileGroup)<-[:IN]-(u:User {id: {userId}}) RETURN u.id AS id " +
-				"UNION MATCH (g:Group {id: {id}})<-[:IN]-(u:User {id: {userId}}) RETURN u.id AS id";
+				"MATCH (c:Class {id: $id})<-[:DEPENDS]-(:ProfileGroup)<-[:IN]-(u:User {id: $userId}) RETURN u.id AS id " +
+				"UNION MATCH (g:Group {id: $id})<-[:IN]-(u:User {id: $userId}) RETURN u.id AS id";
 		return Db.neo4j(query, new JsonObject().put("id", contextId).put("userId", userId))
 				.map(rows -> !rows.isEmpty());
 	}
