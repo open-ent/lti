@@ -2,13 +2,6 @@ name: Build & Publish Fat Mod
 
 on:
   push:
-    branches:
-      - main
-      - master
-      - develop
-      - dev
-      - '*-patched'
-      - '*-patched-dev'
     tags:
       - '*'
       # tags "-dev" mobiles créés par publish-dev-tag.yml : ce workflow les publie déjà
